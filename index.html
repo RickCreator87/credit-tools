@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Tools | Richard's Credit Authority</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans">
+    <nav class="p-6 bg-white border-b"><a href="/" class="font-bold text-blue-700">← Back to Authority Hub</a></nav>
+    <header class="py-16 px-6 text-center bg-white border-b">
+        <h1 class="text-4xl font-extrabold mb-4">The Credit Utility Belt</h1>
+        <p class="text-slate-500">Fast, accurate calculators for every financial decision.</p>
+    </header>
+
+    <main class="max-w-4xl mx-auto py-12 px-6 space-y-8">
+        <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2"><i class="fa-solid fa-calculator text-blue-600"></i> Debt-to-Income (DTI)</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <input type="number" id="monthlyDebt" placeholder="Monthly Debt ($)" class="p-3 border rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="number" id="monthlyIncome" placeholder="Gross Monthly Income ($)" class="p-3 border rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <button onclick="calcDTI()" class="mt-4 w-full bg-blue-600 text-white py-3 rounded-xl font-bold">Calculate DTI</button>
+            <p id="dtiResult" class="mt-4 text-center font-bold text-xl text-blue-700"></p>
+        </div>
+    </main>
+
+    <script>
+        function calcDTI() {
+            const debt = parseFloat(document.getElementById('monthlyDebt').value);
+            const income = parseFloat(document.getElementById('monthlyIncome').value);
+            if(debt && income) {
+                const dti = ((debt / income) * 100).toFixed(1);
+                document.getElementById('dtiResult').innerText = `Your DTI is ${dti}%`;
+            }
+        }
+    </script>
+</body>
+</html>
+
